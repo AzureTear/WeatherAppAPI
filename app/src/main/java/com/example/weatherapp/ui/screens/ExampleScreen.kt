@@ -132,7 +132,7 @@ fun WeatherDetails(data : WeatherModel) {
                 contentAlignment = Alignment.Center
             ) {
                 AsyncImage(
-                    modifier = Modifier.size(300.dp),
+                    modifier = Modifier.size(280.dp),
                     model = "https:${data.current.condition.icon}".replace("64x64","128x128"),
                     contentDescription = "Condition icon"
                 )
@@ -145,7 +145,7 @@ fun WeatherDetails(data : WeatherModel) {
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(horizontal = 16.dp)
+                        .padding(horizontal = 16.dp, vertical = 1.dp)
                     ,
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.Bottom
@@ -155,19 +155,19 @@ fun WeatherDetails(data : WeatherModel) {
                         text = "HUMEDAD: " + data.current.humidity + "%",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        fontSize = 12.sp
+                        fontSize = 10.sp
                     )
                     Text(
                         text = "TEMPERATURA: " + data.current.temp_c + "°",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        fontSize = 12.sp
+                        fontSize = 10.sp
                     )
                     Text(
                         text = "VIENTO: " + data.current.wind_kph + "KM/H",
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onPrimaryContainer,
-                        fontSize = 12.sp
+                        fontSize = 10.sp
                     )
                 }
             }
