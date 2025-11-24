@@ -102,6 +102,19 @@ fun HomeScreen2(viewModel: WeatherViewModel) {
 
 @Composable
 fun WeatherDetails(data : WeatherModel) {
+
+    val forecast = data.forecast
+    val forecastDay = forecast?.forecastday
+
+    if (forecast == null || forecastDay.isNullOrEmpty()) {
+        Text("No forecast data available.")
+        return
+    }
+
+    val day1 = forecastDay[1]
+    val day2 = forecastDay[2]
+    val day3 = forecastDay[3]
+
     Column(
         modifier = Modifier.padding().fillMaxSize().background(MaterialTheme.colorScheme.background)
     ) {
@@ -184,7 +197,7 @@ fun WeatherDetails(data : WeatherModel) {
         ) {
             Card(
                 modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
+                    .padding(horizontal = 5.dp).height(100.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 ),
@@ -196,15 +209,26 @@ fun WeatherDetails(data : WeatherModel) {
                 ) {
                     Column {
                         Text(
-                            text = "8:00",
+                            text =  day1.date,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "14°C",
+                            text = "T° max: " + day1.day.maxtemp_c ,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
+                        Text(
+                            text = "T° min: " + day1.day.mintemp_c,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            text = "Humedad: " + day1.day.avghumidity,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+
                     }
                 }
             }
@@ -214,24 +238,34 @@ fun WeatherDetails(data : WeatherModel) {
 
             Card(
                 modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
+                    .padding(horizontal = 5.dp).height(100.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 ),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Box(
-                    Modifier.padding(horizontal = 16.dp),
+                    Modifier.padding(horizontal = 14.dp),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     Column {
                         Text(
-                            text = "9:00",
+                            text =  day2.date,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "16°C",
+                            text = "T° max: " + day2.day.maxtemp_c,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            text = "T° max: " + day2.day.mintemp_c,
+                            style = MaterialTheme.typography.bodyMedium,
+                            color = MaterialTheme.colorScheme.onPrimaryContainer
+                        )
+                        Text(
+                            text = "Humedad: " + day2.day.avghumidity,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
@@ -243,108 +277,34 @@ fun WeatherDetails(data : WeatherModel) {
 
             Card(
                 modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
+                    .padding(horizontal = 5.dp).height(100.dp),
                 colors = CardDefaults.cardColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer
                 ),
                 shape = RoundedCornerShape(16.dp)
             ) {
                 Box(
-                    Modifier.padding(horizontal = 16.dp),
+                    Modifier.padding(horizontal = 14.dp),
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     Column {
                         Text(
-                            text = "10:00",
+                            text =  day3.date,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "17°C",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-            }
-
-            Card(
-                modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                ),
-                shape = RoundedCornerShape(16.dp)
-            ) {
-                Box(
-                    Modifier.padding(horizontal = 16.dp),
-                    contentAlignment = Alignment.BottomCenter
-                ) {
-                    Column {
-                        Text(
-                            text = "11:00",
+                            text = "T° max: " + day3.day.maxtemp_c,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "19°C",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-            }
-
-
-            Card(
-                modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                ),
-                shape = RoundedCornerShape(16.dp)
-            ) {
-                Box(
-                    Modifier.padding(horizontal = 16.dp),
-                    contentAlignment = Alignment.BottomCenter
-                ) {
-                    Column {
-                        Text(
-                            text = "12:00",
+                            text = "T° min: " + day3.day.mintemp_c,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
                         Text(
-                            text = "21°C",
-                            style = MaterialTheme.typography.bodyMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-                        )
-                    }
-                }
-            }
-
-
-            Card(
-                modifier = Modifier
-                    .padding(horizontal = 6.dp).height(100.dp),
-                colors = CardDefaults.cardColors(
-                    containerColor = MaterialTheme.colorScheme.primaryContainer
-                ),
-                shape = RoundedCornerShape(16.dp)
-            ) {
-                Box(
-                    Modifier.padding(horizontal = 16.dp),
-                    contentAlignment = Alignment.BottomCenter
-                ) {
-                    Column {
-                        Text(
-                            text = "13:00",
-                            style = MaterialTheme.typography.titleMedium,
-                            color = MaterialTheme.colorScheme.onPrimaryContainer
-
-                        )
-                        Text(
-                            text = "23°C",
+                            text = "Humedad: " + day3.day.avghumidity,
                             style = MaterialTheme.typography.bodyMedium,
                             color = MaterialTheme.colorScheme.onPrimaryContainer
                         )
