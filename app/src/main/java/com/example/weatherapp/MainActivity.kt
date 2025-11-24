@@ -5,9 +5,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -26,19 +31,24 @@ import com.example.weatherapp.ui.theme.WeatherAppTheme
 import com.example.weatherapp.ui.viewmodel.ItemViewModel
 import com.example.weatherapp.ui.viewmodel.ItemViewModelFactory
 import com.example.weatherapp.ui.viewmodel.MainViewModel
+import com.example.weatherapp.ui.viewmodel.WeatherViewModel
+
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         val dao = AppDatabase.getDatabase(application).itemDao()
         val factory = ItemViewModelFactory(dao)
-        enableEdgeToEdge()
-        setContent {
-            val viewModel: ItemViewModel = viewModel(factory = factory)
-            WeatherAppTheme {
-                App(application)
-            }
 
+        setContent {
+            WeatherAppTheme {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    App(application)
+                }
+            }
         }
     }
 }
@@ -47,6 +57,8 @@ class MainActivity : ComponentActivity() {
 fun App(application: Context) {
     val navController = rememberNavController()
     val bottomItems = listOf(BottomNavItem.Home,  BottomNavItem.Add, BottomNavItem.Others)
+
+    val weatherViewModel: WeatherViewModel = viewModel()
 
     Scaffold(
         bottomBar = { BottomBar(navController, bottomItems) }
@@ -66,7 +78,7 @@ fun App(application: Context) {
 
 
             composable(Routes.HOME) {
-                HomeScreen2()
+                HomeScreen2(weatherViewModel)
             }
 
 

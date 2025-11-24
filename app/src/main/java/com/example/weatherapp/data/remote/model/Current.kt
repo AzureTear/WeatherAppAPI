@@ -15,5 +15,6 @@ data class Current(
     val pressure_mb: String,
     val temp_c: String,
     val temp_f: String,
-    val wind_kph: String
+    val wind_kph: String,
+    val uv: String
 )
