@@ -116,22 +116,28 @@ fun WeatherDetails(data : WeatherModel) {
             shape = RoundedCornerShape(16.dp)
         ) {
             Row(
-                horizontalArrangement = Arrangement.Start,
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center,
                 verticalAlignment = Alignment.CenterVertically
-            ){
-            Text(text = data.location.name, fontSize = 20.sp)
-            Spacer(modifier = Modifier.width(8.dp))
-            Text(text = data.location.country, fontSize = 18.sp)
+            ) {
+                Text(text = data.location.name, fontSize = 20.sp)
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(text = data.location.country, fontSize = 18.sp)
             }
-            Box(
-                contentAlignment = Alignment.Center
-            ){
-            AsyncImage(
-                modifier = Modifier.size(300.dp),
-                model = "https:${data.current.condition.icon}".replace("64x64","128x128"),
-                contentDescription = "Condition icon",
 
-            )}
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                AsyncImage(
+                    modifier = Modifier.size(300.dp),
+                    model = "https:${data.current.condition.icon}".replace("64x64","128x128"),
+                    contentDescription = "Condition icon"
+                )
+            }
+
             Box(
                 modifier = Modifier.fillMaxSize(),
 
