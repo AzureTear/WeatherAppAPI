@@ -36,8 +36,6 @@ import com.example.weatherapp.ui.viewmodel.WeatherViewModel
 @Composable
 fun HomeScreen2(viewModel: WeatherViewModel) {
 
-    var searchText by remember { mutableStateOf("") }
-    var cartItemCount by remember { mutableStateOf(3) }
 
     var city by remember {
         mutableStateOf("")

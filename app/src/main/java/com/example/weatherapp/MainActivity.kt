@@ -40,13 +40,15 @@ class MainActivity : ComponentActivity() {
         val dao = AppDatabase.getDatabase(application).itemDao()
         val factory = ItemViewModelFactory(dao)
 
+        val weatherViewModel = ViewModelProvider(this)[WeatherViewModel::class.java]
+
         setContent {
             WeatherAppTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    App(application)
+                    HomeScreen2(weatherViewModel)
                 }
             }
         }

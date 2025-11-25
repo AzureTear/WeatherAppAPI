@@ -60,6 +60,19 @@ dependencies {
     implementation("androidx.compose.runtime:runtime-livedata:1.6.6")
     implementation("io.coil-kt:coil-compose:2.6.0")
 
+    // Extension Iconos
+    implementation("androidx.compose.material:material-icons-extended")
+
+    // Kotest
+    testImplementation("io.kotest:kotest-runner-junit5:5.8.0")
+    testImplementation("io.kotest:kotest-assertions-core:5.8.0")
+
+    // JUnit5
+    testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
+
+    // Mockk
+    testImplementation("io.mockk:mockk:1.13.10")
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -76,4 +89,8 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
+
+    tasks.withType<Test>().configureEach {
+        useJUnitPlatform()
+    }
 }

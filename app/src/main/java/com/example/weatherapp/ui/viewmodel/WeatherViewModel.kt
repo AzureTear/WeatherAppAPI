@@ -16,8 +16,6 @@ class WeatherViewModel :ViewModel() {
     private val _weatherResult = MutableLiveData<NetworkResponse<WeatherModel>>()
     val weatherResult : LiveData<NetworkResponse<WeatherModel>> = _weatherResult
 
-
-
     fun getData(city : String){
         _weatherResult.value = NetworkResponse.Loading
         viewModelScope.launch {
