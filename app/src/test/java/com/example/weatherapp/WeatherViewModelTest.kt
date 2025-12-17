@@ -3,15 +3,12 @@ package com.example.weatherapp
 import com.example.weatherapp.data.remote.Api.NetworkResponse
 import com.example.weatherapp.data.remote.model.Condition
 import com.example.weatherapp.data.remote.model.Current
-import com.example.weatherapp.data.remote.model.Day
 import com.example.weatherapp.data.remote.model.Forecast
-import com.example.weatherapp.data.remote.model.Forecastday
 import com.example.weatherapp.data.remote.model.Location
 import com.example.weatherapp.data.remote.model.WeatherModel
 import com.example.weatherapp.data.repository.ForecastRepositoryInterface
 import com.example.weatherapp.ui.viewmodel.WeatherViewModel
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import org.junit.Assert.*
 import org.junit.Test
