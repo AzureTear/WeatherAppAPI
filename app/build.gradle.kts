@@ -93,4 +93,5 @@ dependencies {
     tasks.withType<Test>().configureEach {
         useJUnitPlatform()
     }
+    testImplementation(kotlin("test"))
 }
